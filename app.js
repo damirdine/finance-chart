@@ -2,5 +2,50 @@ let data = JSON.parse('{"dataset_data":{"limit":null,"transform":null,"column_in
 // fetch('https://data.nasdaq.com/api/v3/datasets/WIKI/FB/data.json')
 //   .then((response) => response.json())
 //   .then((json) => console.log(json));
-  console.log(data)
+  console.log(data.dataset_data.data[0])
+  let price
+console.log(price)
+
+
+  var options = {
+    series: [{
+    name: "STOCK ABC",
+    data: data.dataset_data.data
+  }],
+    chart: {
+    type: 'area',
+    height: 350,
+    zoom: {
+      enabled: false
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    curve: 'straight'
+  },
+  
+  title: {
+    text: 'Fundamental Analysis of Stocks',
+    align: 'left'
+  },
+  subtitle: {
+    text: 'Price Movements',
+    align: 'left'
+  },
+  labels: series.monthDataSeries1.dates,
+  xaxis: {
+    type: 'datetime',
+  },
+  yaxis: {
+    opposite: true
+  },
+  legend: {
+    horizontalAlign: 'left'
+  }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();
 
