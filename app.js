@@ -2,10 +2,7 @@ let data = JSON.parse('{"dataset_data":{"limit":null,"transform":null,"column_in
 // fetch('https://data.nasdaq.com/api/v3/datasets/WIKI/FB/data.json')
 //   .then((response) => response.json())
 //   .then((json) => console.log(json));
-  console.log(data.dataset_data.data[0])
-  let price
-console.log(price)
-
+  console.log(data)
 
   var options = {
     series: [{
@@ -34,7 +31,7 @@ console.log(price)
     text: 'Price Movements',
     align: 'left'
   },
-  labels: series.monthDataSeries1.dates,
+  labels: data.dataset_data.data,
   xaxis: {
     type: 'datetime',
   },
@@ -46,6 +43,6 @@ console.log(price)
   }
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  var chart = new ApexCharts(document.querySelector("#app"), options);
   chart.render();
 
