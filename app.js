@@ -1,4 +1,15 @@
-fetch('https://data.nasdaq.com/api/v3/datasets/WIKI/FB/data.json')
+const requestOptions = {
+  method: 'GET',
+  headers: new Headers({
+    'Content-Type': 'application/json',
+    // Add any other headers if needed
+  }),
+  mode: 'cors', // Important for cross-origin requests
+  cache: 'default',
+};
+
+
+fetch('https://data.nasdaq.com/api/v3/datasets/WIKI/FB/data.json', requestOptions)
   .then((response) => response.json())
   .then((json) => chartDisplay(json));
 function chartDisplay(data){
